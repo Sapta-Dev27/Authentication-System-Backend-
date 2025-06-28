@@ -15,7 +15,7 @@ const userLogin = async (req, res) => {
           message: "User with this Email does not exist. Please register first or try with another email"
         })
       }
-      const checkPassword = await bcrypt.compare(userpassword, userCheck.userPassword    );
+      const checkPassword = await bcrypt.compare(userpassword, userCheck.userPassword);
       if (!checkPassword) {
         return res.status(401).json({
           success: false,
@@ -26,7 +26,8 @@ const userLogin = async (req, res) => {
         id: userCheck._id,
         userNameFromToken: userCheck.userName,
         userEmailFromToken: userCheck.userEmail,
-        userRoleFromToken: userCheck.userRole
+        userRoleFromToken: userCheck.userRole,
+        userPasswordFromToken: userCheck.userPassword // password will be shown in hashed format //
       }
       const token = jwt.sign(payload, process.env.JWT_SECRET_KEY, {
         expiresIn: process.env.JWT_EXPIRE_TIME || "1d"
@@ -45,7 +46,8 @@ const userLogin = async (req, res) => {
           id: userCheck._id,
           userNameFromToken: userCheck.userName,
           userEmailFromToken: userCheck.userEmail,
-          userRoleFromToken: userCheck.userRole
+          userRoleFromToken: userCheck.userRole,
+          userPasswordFromToken: userCheck.userPassword // password will be shown in hashed format //
         }
       })
 
