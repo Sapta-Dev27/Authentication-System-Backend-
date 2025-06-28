@@ -1,6 +1,7 @@
 import User from "../models/user.js";
 import bcrypt from "bcryptjs";
-
+import jwt from "jsonwebtoken";
+import 'dotenv/config';
 
 const userRegister = async (req, res) => {
   try {
@@ -26,10 +27,34 @@ const userRegister = async (req, res) => {
         userRole: userrole
       });
 
+      const payload = {
+        id: newUser._id,
+        userNameFromToken: newUser.userName,
+        userEmailFromToken: newUser.userEmail,
+        userRoleFromToken: newUser.userRole
+      }
+
+      const token = jwt.sign(payload, process.env.JWT_SECRET_KEY, { expiresIn: process.env.JWT_EXPIRE_TIME });
+      console.log(token);
+
+      if (token) {
+        console.log("Token is generated successfully");
+      }
+      else {
+        console.log("Token generation failed")
+      }
+
       if (newUser) {
         return res.status(201).json({
           success: true,
-          message: "User is registered succesfully"
+          message: "User is registered succesfully",
+          tokenGenerated: token,
+          user: {
+            id: newUser._id,
+            userNameFromToken: newUser.userName,
+            userEmailFromToken: newUser.userEmail,
+            userRoleFromToken: newUser.userRole
+          }
         })
       }
 
