@@ -94,7 +94,7 @@ npm install
 
 # 6. Setup your .env
 ```
-MONGO_URL=mongodb+srv://saptadev27:saptadev27@cluster0.fdmefnd.mongodb.net/
+MONGO_URL=MONGO_URL
 PORT=8001
 JWT_SECRET_KEY=saptadev27
 JWT_EXPIRE_TIME=1d
