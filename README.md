@@ -3,3 +3,7 @@
 
 # Role Based Access Control
 ![WhatsApp Image 2025-06-28 at 00 41 53_eec27301](https://github.com/user-attachments/assets/7b52ad9c-7a86-4cee-affd-330e1b672e97)
+
+# Database Schema 
+![image](https://github.com/user-attachments/assets/c62ab55b-7d29-4023-b8da-11454adecad8)
+
