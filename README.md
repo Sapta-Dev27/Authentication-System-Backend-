@@ -65,14 +65,12 @@ root
 
 **Request Body:**
 ```
-{
-  {
+
     "username" : "Saptarshi2003",
     "useremail" : "saptarshi2003@gmail.com",
     "userpassword" : "12345",
     "userrole" : "subadmin"
-}
-}
+
 ```
 ## 2.  🔐 Login User
 **Request Body:**
